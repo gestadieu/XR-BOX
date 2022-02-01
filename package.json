@@ -1,0 +1,36 @@
+{
+  "name": "xr-box-backend",
+  "version": "0.0.1",
+  "description": "interactive digital frame for XR experiences",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gestadieu/XR-BOX.git"
+  },
+  "keywords": [
+    "interactive",
+    "digital",
+    "frame",
+    "video",
+    "photo",
+    "3d",
+    "VR",
+    "AR"
+  ],
+  "author": "Gerald Estadieu",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/gestadieu/XR-BOX/issues"
+  },
+  "homepage": "https://github.com/gestadieu/XR-BOX#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "socket.io": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
