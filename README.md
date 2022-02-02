@@ -4,3 +4,7 @@ Interactive Digital Frame for XR Experiences
 https://kremalicious.com/raspberry-pi-file-and-screen-sharing-macos-ios
 sudo apt install samba samba-common-bin
 https://blog.r0b.io/post/minimal-rpi-kiosk/ 
+
+install
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+sudo apt-get install git nodejs
