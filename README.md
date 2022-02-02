@@ -8,3 +8,9 @@ https://blog.r0b.io/post/minimal-rpi-kiosk/
 install
 curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
 sudo apt-get install git nodejs
+
+
+git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+  
