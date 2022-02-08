@@ -4,6 +4,8 @@
   "description": "interactive digital frame for XR experiences",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon index.js",
+    "expose": "npm start & expose 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,7 +29,11 @@
   },
   "homepage": "https://github.com/gestadieu/XR-BOX#readme",
   "dependencies": {
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "dotenv": "^15.0.0",
     "express": "^4.17.2",
+    "mongoose": "^6.1.10",
     "socket.io": "^4.4.1"
   },
   "devDependencies": {
