@@ -18,10 +18,10 @@ app.use(express.json({
   limit: '1mb'
 }));
 
+// const url = `http://${address.ip()}:${port}/index.html`
+// QRCode.toFile('public/assets/urlqrcode.png', url)
 
 http.listen(port, () => {
-  const url = `http://${address.ip()}:${port}/index.html`
-  QRCode.toFile('public/assets/urlqrcode.png', url)
   console.log(`listening on port http://localhost:${port}`)
 });
 
