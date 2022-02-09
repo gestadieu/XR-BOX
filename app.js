@@ -8,6 +8,19 @@ const express = require('express'),
 const port = process.env.PORT | 3000
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
+let clients = {}
+let page = '';
+const debug = true;
+
+const pages = {
+  'softmind': {
+    name: 'softmind'
+  },
+  'vespa': {
+    name: 'vespa',
+    orientation: 'vertical'
+  }
+}
 
 app.use(cors())
 app.use(express.static('public'));
@@ -25,7 +38,28 @@ http.listen(port, () => {
   console.log(`listening on port http://localhost:${port}`)
 });
 
-// Socket.IO:
-// listen input "buttons"
-// -> change image to display fullscreen
-// -> how to change url in the browser???
+io.on('connection', socket => {
+  if (debug) console.log('new client connected', socket.id);
+  // io.emit('console', `new client ${socket.id}`)
+
+  // identify each client 
+  socket.on('join', location => {
+    clients[socket.id] = location
+    io.emit('console', 'in room ' + location);
+    io.to(socket.id).emit('page', page)
+    if (debug) console.log('joined room ', location, clients)
+  });
+
+  // select a page
+  socket.on('page', msg => {
+    page = msg
+    if (debug) console.log(`msg from client ${clients[socket.id]} / page:  ${msg}`)
+    io.emit('page', msg)
+  })
+
+  socket.on('disconnect', () => {
+    if (debug) console.log(`${socket.id}/${clients[socket.id]} disconnected`);
+    delete clients[socket.id]
+  })
+})
+

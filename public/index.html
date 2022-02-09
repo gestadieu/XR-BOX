@@ -5,15 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="/scripts/socket.io.js"></script>
   <title>AR USJ</title>
+  <script>
+    const client = 'index'
+  </script>
 </head>
 <body>
   <ul>
-    <li><a href="softmind.html" class="ARlink" id="softmind">MindAR demo 1</a></li>
-    <li><a href="vespa.html" class="ARlink" id="vespa">Export from P5.JS Demo</a></li>
-    <li><a href="hk.html" class="ARlink" id="hk">HK 3D Model (Sandra)</a></li>
-    <li><a href="stmichael.html" class="ARlink" id="stmichael">St Michael Church (Sandra)</a></li>
+    <li><a href="softmind.html" class="arlink" id="softmind">MindAR demo 1</a></li>
+    <li><a href="vespa.html" class="arlink" id="vespa">Export from P5.JS Demo</a></li>
+    <li><a href="hk.html" class="arlink" id="hk">HK 3D Model (Sandra)</a></li>
+    <li><a href="stmichael.html" class="arlink" id="stmichael">St Michael Church (Sandra)</a></li>
   </ul>
-  <script src="scripts/ARcontroller.js"></script>
+  <script src="scripts/ar-controller.js"></script>
+  <script>
+    connectXRBox(client)
+  </script>
 </body>
 </html>

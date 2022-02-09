@@ -2,10 +2,19 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: black;
+  /* cursor: none; */
 }
-#ARimg {
+#ar-img {
   width: 100%;
   display: none;
+}
+
+#ar-img.vespa {
+  height: 100vh;
+  display: block;
+  margin: 0px auto;
+  width: auto;
 }
 
 #qrcode {
@@ -26,10 +35,11 @@ li {
   padding: 10px;
   border-radius: 15px;
   border: 1px solid rgb(139, 200, 228);
-  background-color: ghostwhite;
+  background-color: skyblue;
   text-align: center;
 }
 li > a {
   text-decoration: none;
   color: rgb(51, 51, 51);
 }
+

@@ -5,15 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="/scripts/socket.io.js"></script>
   <title>AR USJ</title>
-  <style>
-    
-  </style>
+  <script>
+    const client = 'view'
+  </script>
 </head>
 <body>
   <img id="qrcode" src="assets/urlqrcode.png" alt="AR URL">
-  <img id="ARimg" class="img-fullscreen" src="" alt="">
+  <img id="ar-img" class="img-fullscreen" src="" alt="" ssstyle="display: none;">
 
-  <script src="scripts/viewer.js"></script>
+  <script src="scripts/ar-controller.js"></script>
+  <script>
+    connectXRBox(client)
+  </script>
 </body>
 </html>
