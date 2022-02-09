@@ -29,11 +29,13 @@
   },
   "homepage": "https://github.com/gestadieu/XR-BOX#readme",
   "dependencies": {
+    "address": "^1.1.2",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
     "mongoose": "^6.1.10",
+    "qrcode": "^1.5.0",
     "socket.io": "^4.4.1"
   },
   "devDependencies": {
