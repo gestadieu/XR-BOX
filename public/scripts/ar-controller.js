@@ -4,9 +4,11 @@ let socket = io();
 let page;
 
 
-// DOM Elements in view only
+// DOM Elements in view mode
 let qrcode = document.getElementById('qrcode')
 let arimg = document.getElementById('ar-img')
+
+
 
 function connectXRBox(c) {
   // client = c;

@@ -7,16 +7,15 @@ const express = require('express'),
   QRCode = require('qrcode'),
   fs = require( 'fs' )
 
-const io = require('socket.io')(https)
-const port = process.env.PORT | 3000
-const secure_port = process.env.PORT | 4443
+const port = process.env.PORT | 80
+const secure_port = 443; //process.env.SECURE_PORT | 443
 let clients = {}
 let page = '';
 const debug = true;
 
 let options = {
-  key: fs.readFileSync('./certs/key.pem','utf8'),
-  cert: fs.readFileSync('./certs/cert.pem','utf8')
+  key: fs.readFileSync(__dirname + '/../certs/selfsigned.key'),
+  cert: fs.readFileSync(__dirname + '/../certs/selfsigned.crt')
 };
 
 app.use(cors())
@@ -28,13 +27,16 @@ app.use(express.json({
   limit: '1mb'
 }));
 
-// http.listen(port, () => {
-//   console.log(`listening on port http://localhost:${port}`)
-// });
+http.createServer(app).listen(port, ()=> {
+  console.log(`listening on http://localhost:${port}`)
+})
 
-http.createServer(app).listen(port);
-https.createServer(options, app).listen(secure_port);
-// const io = require('socket.io')(http)
+let server = https.createServer(options, app)
+const io = require('socket.io')(server)
+server.listen(secure_port, ()=> {
+  console.log(`listening on https://localhost:${secure_port}`)
+})
+
 
 
 
