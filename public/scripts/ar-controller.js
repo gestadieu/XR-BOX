@@ -16,7 +16,7 @@ function connectXRBox(c) {
 (function () {
 
   if (client == 'index') {
-    // socket.emit('page','')
+    socket.emit('page','')
     document.querySelectorAll('.arlink').forEach(item => {
       item.addEventListener('click', event => {
         // event.preventDefault()

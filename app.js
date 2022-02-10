@@ -1,26 +1,23 @@
 require('dotenv').config()
 const express = require('express'),
   app = express(),
+  https = require('https'),
+  http = require('http')
   cors = require('cors'),
   QRCode = require('qrcode'),
-  address = require('address')
+  fs = require( 'fs' )
 
+const io = require('socket.io')(https)
 const port = process.env.PORT | 3000
-const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+const secure_port = process.env.PORT | 4443
 let clients = {}
 let page = '';
 const debug = true;
 
-const pages = {
-  'softmind': {
-    name: 'softmind'
-  },
-  'vespa': {
-    name: 'vespa',
-    orientation: 'vertical'
-  }
-}
+let options = {
+  key: fs.readFileSync('./certs/key.pem','utf8'),
+  cert: fs.readFileSync('./certs/cert.pem','utf8')
+};
 
 app.use(cors())
 app.use(express.static('public'));
@@ -31,12 +28,15 @@ app.use(express.json({
   limit: '1mb'
 }));
 
-// const url = `http://${address.ip()}:${port}/index.html`
-// QRCode.toFile('public/assets/urlqrcode.png', url)
+// http.listen(port, () => {
+//   console.log(`listening on port http://localhost:${port}`)
+// });
 
-http.listen(port, () => {
-  console.log(`listening on port http://localhost:${port}`)
-});
+http.createServer(app).listen(port);
+https.createServer(options, app).listen(secure_port);
+// const io = require('socket.io')(http)
+
+
 
 io.on('connection', socket => {
   if (debug) console.log('new client connected', socket.id);

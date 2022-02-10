@@ -16,9 +16,18 @@ sudo pm2 start index.js
 sudo pm2 startup systemd
 sudo pm2 save
 
-git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
+https 
+generate self-cert sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt
 
-  // https://expose.sh/ 
-// debugging https://expose.sh/blog/2021/11/17/learn-how-to-debug-node-express-with-vscode/ 
+reverse proxy https://github.com/ktorn/reverse-ssh-tunnel 
+ssl cert https://letsencrypt.org/
+domain name https://www.duckdns.org/domains xr-box.duckdns.org 
+
+AR.js gesture (zoom, rotate...)
+https://github.com/fcor/arjs-gestures 
+
+<!-- git config --global user.email "you@example.com"
+  git config --global user.name "Your Name" -->
+
+
 
