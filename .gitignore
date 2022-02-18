@@ -5,6 +5,9 @@
 # HTTPS cert
 certs/
 
+# misc
+public/assets/urlqrcode.*
+
 # Logs
 logs
 *.log
