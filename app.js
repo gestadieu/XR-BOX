@@ -7,15 +7,15 @@ const express = require('express'),
   QRCode = require('qrcode'),
   fs = require( 'fs' )
 
-const port = process.env.PORT | 80
-const secure_port = 443; //process.env.SECURE_PORT | 443
+const port = process.env.PORT | 5000
+const secure_port = process.env.SECURE_PORT | 443
 let clients = {}
 let page = '';
-const debug = true;
+const debug = (process.env.NODE_DEV == 'development') ? true : false;
 
 let options = {
-  key: fs.readFileSync(__dirname + '/../certs/selfsigned.key'),
-  cert: fs.readFileSync(__dirname + '/../certs/selfsigned.crt')
+  key: fs.readFileSync(__dirname + process.env.SSL_KEY_PATH),
+  cert: fs.readFileSync(__dirname + process.env.SSL_CERT_PATH)
 };
 
 app.use(cors())
