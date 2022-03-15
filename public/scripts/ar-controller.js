@@ -8,8 +8,6 @@ let page;
 let qrcode = document.getElementById('qrcode')
 let arimg = document.getElementById('ar-img')
 
-
-
 function connectXRBox(c) {
   // client = c;
   socket.emit('join', client);
@@ -38,7 +36,7 @@ function connectXRBox(c) {
       qrcode.style.display = (page)?'none':'block'
     //   // load and show the corresponding image based on the msg
       if (page) {
-        arimg.src = `assets/images/${msg}.png`
+        arimg.src = `/assets/images/${msg}.png`
         arimg.className = ''
         arimg.className = msg
       }
