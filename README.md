@@ -21,6 +21,13 @@ https://github.com/youmustfight/aframe-asset-lazy-load
 AR.js gesture (zoom, rotate...)
 https://github.com/fcor/arjs-gestures 
 
+
+
+reverse proxy https://github.com/ktorn/reverse-ssh-tunnel 
+ssl cert https://letsencrypt.org/
+domain name https://www.duckdns.org/domains xr-box.duckdns.org 
+
+
 https 
 Let'sEncrypt SSL Certificate https://pimylifeup.com/raspberry-pi-ssl-lets-encrypt/ 
 sudo certbot certonly --standalone -d xr-box.duckdns.org
@@ -53,12 +60,6 @@ app.use(function(request, response, next) {
 
     next();
 })
-
-reverse proxy https://github.com/ktorn/reverse-ssh-tunnel 
-ssl cert https://letsencrypt.org/
-domain name https://www.duckdns.org/domains xr-box.duckdns.org 
-
-sudo certbot certonly 
 
 
 AR.js gesture (zoom, rotate...)

@@ -7,7 +7,7 @@ const express = require('express'),
   QRCode = require('qrcode'),
   fs = require( 'fs' )
 
-const port = process.env.PORT | 5000
+const port = process.env.PORT | 3000
 const secure_port = process.env.SECURE_PORT | 443
 let clients = {}
 let page = '';
@@ -49,8 +49,6 @@ const io = require('socket.io')(server)
 server.listen(secure_port, '0.0.0.0', ()=> {
   console.log(`listening on https://localhost:${secure_port}`)
 })
-
-
 
 
 io.on('connection', socket => {
