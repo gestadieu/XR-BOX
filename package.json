@@ -5,7 +5,6 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon index.js",
-    "expose": "npm start & expose 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,6 +33,7 @@
     "cors": "^2.8.5",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
+    "helmet": "^5.0.2",
     "mongoose": "^6.1.10",
     "qrcode": "^1.5.0",
     "socket.io": "^4.4.1"

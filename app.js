@@ -1,52 +1,43 @@
 require('dotenv').config()
-const express = require('express'),
-  app = express(),
-  https = require('https'),
+
+const express = require('express')
+const app = express()
+const port = 80 //process.env.PORT || 3000
+const secure_port = process.env.SECURE_PORT || 443
+
+const https = require('https'),
   http = require('http')
   cors = require('cors'),
+  helmet = require("helmet"),
   QRCode = require('qrcode'),
   fs = require( 'fs' )
 
-const port = process.env.PORT | 3000
-const secure_port = process.env.SECURE_PORT | 443
+app.use(cors())
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json({ limit: '1mb' }));
+app.use(helmet())
+
 let clients = {}
 let page = '';
 const debug = (process.env.NODE_DEV == 'development') ? true : false;
 
-let options = {
-  key: fs.readFileSync(__dirname + process.env.SSL_KEY_PATH),
-  cert: fs.readFileSync(__dirname + process.env.SSL_CERT_PATH)
+const credentials = {
+  key: fs.readFileSync(process.env.SSL_KEY_PATH),
+  cert: fs.readFileSync(process.env.SSL_CERT_PATH)
 };
 
-//process.env.SSL_KEY
-//process.env.SSL_CERT
-//process.env.SSL_CA
-// const privateKey = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/privkey.pem', 'utf8');
-// const certificate = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/cert.pem', 'utf8');
 // const ca = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/chain.pem', 'utf8');
 
-// const credentials = {
-// 	key: privateKey,
-// 	cert: certificate,
-// 	ca: ca
-// };
-
-app.use(cors())
-app.use(express.static('public'), { dotfiles: 'allow' });
-app.use(express.urlencoded({
-  extended: true
-}))
-app.use(express.json({
-  limit: '1mb'
-}));
-
-http.createServer(app).listen(port, ()=> {
+let server_nossl = http.createServer(app).listen(port, ()=> {
   console.log(`listening on http://localhost:${port}`)
 })
+// const io = require('socket.io')(server_nossl)
 
-let server = https.createServer(options, app)
-const io = require('socket.io')(server)
-server.listen(secure_port, '0.0.0.0', ()=> {
+let server_ssl = https.createServer(credentials, app)
+const io = require('socket.io')(server_ssl)
+
+server_ssl.listen(secure_port, '0.0.0.0', ()=> {
   console.log(`listening on https://localhost:${secure_port}`)
 })
 
