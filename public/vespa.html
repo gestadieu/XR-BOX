@@ -10,18 +10,23 @@
   <body>
     <a-scene mindar-image="imageTargetSrc: ./assets/minds/targets-vespa.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-      <a-entity mindar-image-target="targetIndex: 0">
+      <a-entity mindar-image-target="targetIndex: 0" id="entity-vespa">
         <a-video src="#arvespa" width="1" height="1.41" position="0 0 0" rotation="0 0 0"></a-video>
       </a-entity>
 
       <a-assets>
-        <video id="arvespa" autoplay muted webkit-playsinline artoolkit crossorigin loop src="./assets/videos/vespa.mp4"></video>
+        <video id="arvespa" muted webkit-playsinline playsinline artoolkit crossorigin loop src="./assets/videos/vespa.mp4"></video>
       </a-assets>
     </a-scene>
     <script> 
-      let v = document.querySelector('#arvespa');
-      window.addEventListener('click', function () {  v.play(); }); 
-      v.click()
+      const v = document.querySelector('#arvespa')
+      // window.addEventListener('click', function () {  v.play(); }); 
+      // v.click()
+      
+      const entityVespa = document.querySelector('#entity-birds');
+      entityVespa.addEventListener("targetFound", event => {
+        v.play()
+      })
     </script> 
   </body>
 </html>
