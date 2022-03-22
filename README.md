@@ -12,8 +12,8 @@ sudo apt-get install git nodejs certbot
 
 sudo npm install -g pm2
 sudo pm2 ls
-sudo pm2 start index.js
-sudo pm2 startup systemd
+sudo pm2 start app.js --watch --name xrbox-server
+sudo pm2 startup systemd (pm2 unstartup systemd to remove)
 sudo pm2 save
 
 lazy loading assets in a-frame

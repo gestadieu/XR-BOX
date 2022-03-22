@@ -6,17 +6,24 @@ const port = 80 //process.env.PORT || 3000
 const secure_port = process.env.SECURE_PORT || 443
 
 const https = require('https'),
-  http = require('http')
+  http = require('http'),
+  forceSSL = require('express-enforces-ssl'),
   cors = require('cors'),
   helmet = require("helmet"),
   QRCode = require('qrcode'),
   fs = require( 'fs' )
 
 app.use(cors())
+app.use(forceSSL())
+// app.use(helmet())
+// app.use(helmet({
+//   featurePolicy: "autoplay 'self'",
+//   permissionsPolicy: "autoplay 'self'",
+//   // contentSecurityPolicy: "default-src 'self'"
+// }))
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json({ limit: '1mb' }));
-app.use(helmet())
+app.use(express.json({ limit: '1mb' }))
 
 let clients = {}
 let page = '';
